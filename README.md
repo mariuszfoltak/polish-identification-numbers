@@ -1,1 +1,2 @@
 # polish-identification-numbers
+[![Build Status](https://app.travis-ci.com/mariuszfoltak/polish-identification-numbers.svg?branch=main)](https://app.travis-ci.com/mariuszfoltak/polish-identification-numbers)
