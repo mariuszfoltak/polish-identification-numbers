@@ -19,9 +19,6 @@ public class Pesel {
         this.peselValidator = peselValidator;
         this.peselBirthDateDecoder = peselBirthDateDecoder;
         this.peselSexDecoder = peselSexDecoder;
-
-        birthDate = peselBirthDateDecoder.decode(pesel);
-        sex = peselSexDecoder.decode(pesel);
     }
 
     public LocalDate getBirthDate() {
