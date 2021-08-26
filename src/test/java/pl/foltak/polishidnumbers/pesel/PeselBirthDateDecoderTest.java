@@ -44,18 +44,5 @@ class PeselBirthDateDecoderTest {
                 Arguments.of("99692945016", LocalDate.of(2299, 9, 29))
         );
     }
-//
-//    @ParameterizedTest
-//    @ValueSource(strings = {
-//            "57110373928",
-//            "78070815963",
-//            "51031642123",
-//            "70020448683",
-//            "98073138685",
-//    })
-//    void sex_should_be_female(String string) throws InvalidPeselException {
-//        Pesel.Sex decodedSex = peselBirthDateDecoder.decode(string);
-//        assertThat(decodedSex, equalTo(Pesel.Sex.FEMALE));
-//    }
 
 }

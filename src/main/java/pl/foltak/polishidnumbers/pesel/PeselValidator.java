@@ -6,7 +6,7 @@ import static pl.foltak.polishidnumbers.pesel.InvalidPeselException.PeselConstra
 
 public class PeselValidator {
 
-    public static final int[] WEIGHTS = new int[]{1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1};
+    private static final int[] WEIGHTS = new int[]{1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1};
 
     private final PeselBirthDateDecoder peselBirthDateDecoder;
 

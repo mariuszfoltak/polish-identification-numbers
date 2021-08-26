@@ -3,22 +3,18 @@ package pl.foltak.polishidnumbers.pesel;
 import java.time.LocalDate;
 
 public class Pesel {
-    private final PeselValidator peselValidator;
-    private final PeselBirthDateDecoder peselBirthDateDecoder;
-    private final PeselSexDecoder peselSexDecoder;
+    private final LocalDate birthDate;
+    private final Pesel.Sex sex;
 
-    private LocalDate birthDate;
-    private Pesel.Sex sex;
-
-    public Pesel(String pesel) {
+    public Pesel(String pesel) throws InvalidPeselException {
         this(new PeselValidator(), new PeselBirthDateDecoder(), new PeselSexDecoder(), pesel);
     }
 
     Pesel(PeselValidator peselValidator, PeselBirthDateDecoder peselBirthDateDecoder,
-          PeselSexDecoder peselSexDecoder, String pesel) {
-        this.peselValidator = peselValidator;
-        this.peselBirthDateDecoder = peselBirthDateDecoder;
-        this.peselSexDecoder = peselSexDecoder;
+          PeselSexDecoder peselSexDecoder, String pesel) throws InvalidPeselException {
+        peselValidator.assertIsValid(pesel);
+        birthDate = peselBirthDateDecoder.decode(pesel);
+        sex = peselSexDecoder.decode(pesel);
     }
 
     public LocalDate getBirthDate() {

@@ -15,6 +15,7 @@ public class InvalidPeselException extends Exception {
     public enum PeselConstraint {
         INCORRECT_LENGTH,
         INCORRECT_CHARACTERS,
-        INCORRECT_CHECK_DIGIT, INCORRECT_BIRTH_DATE;
+        INCORRECT_CHECK_DIGIT,
+        INCORRECT_BIRTH_DATE
     }
 }
