@@ -100,9 +100,14 @@ class PeselValidatorTest {
             "59102843826",
             "47090271277",
             "53021662818",
-            "74032698429"
+            "74032698429",
+            "57270679894",
+            "91472785942",
+            "02672122224",
+            "79870575572",
     })
     public void pesel_is_valid(String string) {
+        assertThat(peselValidator.isValid(string), equalTo(true));
         try {
             peselValidator.assertIsValid(string);
         } catch (InvalidPeselException e) {
