@@ -19,17 +19,9 @@ class PeselSexDecoderTest {
     }
 
     @Test
-    public void pesel_should_not_be_null() {
+    void pesel_should_not_be_null() {
         assertThrows(NullPointerException.class, () -> {
             peselSexDecoder.decode(null);
-        });
-    }
-
-    @ParameterizedTest
-    @ValueSource(strings = {"1", "abc", "toooooolongstring", "92060671492", "47601028563", "84052133373"})
-    public void pesel_should_be_valid(String string) {
-        assertThrows(InvalidPeselException.class, () -> {
-            peselSexDecoder.decode(string);
         });
     }
 
@@ -41,7 +33,7 @@ class PeselSexDecoderTest {
             "69010818333",
             "56031113712",
     })
-    public void sex_should_be_male(String string) throws InvalidPeselException {
+    void sex_should_be_male(String string) throws InvalidPeselException {
         Pesel.Sex decodedSex = peselSexDecoder.decode(string);
         assertThat(decodedSex, equalTo(Pesel.Sex.MALE));
     }
@@ -54,7 +46,7 @@ class PeselSexDecoderTest {
             "70020448683",
             "98073138685",
     })
-    public void sex_should_be_female(String string) throws InvalidPeselException {
+    void sex_should_be_female(String string) throws InvalidPeselException {
         Pesel.Sex decodedSex = peselSexDecoder.decode(string);
         assertThat(decodedSex, equalTo(Pesel.Sex.FEMALE));
     }

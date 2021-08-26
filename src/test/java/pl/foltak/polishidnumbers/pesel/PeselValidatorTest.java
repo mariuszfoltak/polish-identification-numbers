@@ -21,7 +21,7 @@ class PeselValidatorTest {
     }
 
     @Test
-    public void pesel_should_not_be_null() {
+    void pesel_should_not_be_null() {
         assertThrows(NullPointerException.class, () -> {
             peselValidator.assertIsValid(null);
         });
@@ -29,7 +29,7 @@ class PeselValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"1", "abc", "toooooolongstring"})
-    public void pesel_should_be_11_characters_long(String string) {
+    void pesel_should_be_11_characters_long(String string) {
         assertThat(peselValidator.isValid(string), equalTo(false));
         InvalidPeselException invalidPeselException = assertThrows(InvalidPeselException.class, () -> {
             peselValidator.assertIsValid(string);
@@ -39,7 +39,7 @@ class PeselValidatorTest {
 
     @ParameterizedTest
     @ValueSource(strings = {"aaaaaaaaaaa", "1234567890a", "a1234567890"})
-    public void pesel_should_contains_only_numbers(String string) {
+    void pesel_should_contains_only_numbers(String string) {
         assertThat(peselValidator.isValid(string), equalTo(false));
         InvalidPeselException invalidPeselException = assertThrows(InvalidPeselException.class, () -> {
             peselValidator.assertIsValid(string);
@@ -60,7 +60,7 @@ class PeselValidatorTest {
             "99122584564",
             "92060671492"
     })
-    public void pesel_should_have_correct_check_digit(String string) {
+    void pesel_should_have_correct_check_digit(String string) {
         assertThat(peselValidator.isValid(string), equalTo(false));
         InvalidPeselException invalidPeselException = assertThrows(InvalidPeselException.class, () -> {
             peselValidator.assertIsValid(string);
@@ -79,9 +79,11 @@ class PeselValidatorTest {
             "47601028563",
             "64732879437",
             "53800314244",
-            "52930717282"
+            "52930717282",
+            "40438855818",
+            "34352328019",
     })
-    public void pesel_should_have_correct_birth_date(String string) {
+    void pesel_should_have_correct_birth_date(String string) {
         assertThat(peselValidator.isValid(string), equalTo(false));
         InvalidPeselException invalidPeselException = assertThrows(InvalidPeselException.class, () -> {
             peselValidator.assertIsValid(string);
@@ -106,7 +108,7 @@ class PeselValidatorTest {
             "02672122224",
             "79870575572",
     })
-    public void pesel_is_valid(String string) {
+    void pesel_is_valid(String string) {
         assertThat(peselValidator.isValid(string), equalTo(true));
         try {
             peselValidator.assertIsValid(string);

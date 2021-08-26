@@ -1,10 +1,22 @@
 package pl.foltak.polishidnumbers.pesel;
 
+import java.time.DateTimeException;
+
 import static pl.foltak.polishidnumbers.pesel.InvalidPeselException.PeselConstraint.*;
 
 public class PeselValidator {
 
     public static final int[] WEIGHTS = new int[]{1, 3, 7, 9, 1, 3, 7, 9, 1, 3, 1};
+
+    private final PeselBirthDateDecoder peselBirthDateDecoder;
+
+    public PeselValidator() {
+        this(new PeselBirthDateDecoder());
+    }
+
+    PeselValidator(PeselBirthDateDecoder peselBirthDateDecoder) {
+        this.peselBirthDateDecoder = peselBirthDateDecoder;
+    }
 
     public boolean isValid(String pesel) {
         try {
@@ -25,18 +37,15 @@ public class PeselValidator {
         if (!hasCorrectCheckDigit(pesel)) {
             throw new InvalidPeselException(INCORRECT_CHECK_DIGIT, "Invalid PESEL number: incorrect check digit");
         }
-        if (!hasCorrectBirthDate(pesel)) {
-            throw new InvalidPeselException(INCORRECT_BIRTH_DATE, "Invalid PESEL number: incorrect birth date");
-        }
+        assertHasCorrectBirthDate(pesel);
     }
 
-    private boolean hasCorrectBirthDate(String pesel) {
-        int month = Integer.parseInt(pesel.substring(2, 4));
-        return ((month >= 1 && month <= 12) ||
-                (month >= 21 && month <= 32) ||
-                (month >= 41 && month <= 52) ||
-                (month >= 61 && month <= 72) ||
-                (month >= 81 && month <= 92));
+    private void assertHasCorrectBirthDate(String pesel) throws InvalidPeselException {
+        try {
+            peselBirthDateDecoder.decode(pesel);
+        } catch (DateTimeException dateTimeException) {
+            throw new InvalidPeselException(INCORRECT_BIRTH_DATE, "Invalid PESEL number: incorrect birth date");
+        }
     }
 
     private boolean hasCorrectCheckDigit(String pesel) {
