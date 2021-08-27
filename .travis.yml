@@ -3,6 +3,10 @@ addons:
     organization: "mariuszfoltak"
     token:
       secure: "w4uk8XJkFLC8Og52ZjZ2aItGIeeljFm65jL1fp1XeDiHMPb9+i/11l2UhYh/Uv8fbh7iiFreeY7dmuUSEYbzVlzJHR38H6x0PzRZk6hgE6/eUhNgA6zhydyZcc/o6V1W3CuEsG82lRAU0cKFgLcNT22JE5nxDoipaF6W0eJcPab/y6y6PaPBBszflqUC0iWq/aD2xYJWYP9QFBIinPOqoxmhkY1abf/BedGaOenQUwY7D62mwSXCixlXTrPNjQyonAVd5VITYAtMFDpEq2TCHHIDsyVC6Pf3GAmF2PHDkAdMZnL4y/Tp1YB/Z2avfGZKROfbvDyXNbHinGlpZdP5pUJFfVILwgdemjaJs/afAZ2SGhZZ5Ezlfa6Rf5zW2v6Z3tZvFoaYRDwSuJerdDehrKE2E6anQkR6GGfJqhkdt8gdkalXbL5kI3nLYaqoJP/NmPA1U8kOxGBxYmHkAPKH60wZrKDMoW/KisP8UfJVLyGqvU+34dbptpHw9l5o1KPLndQczJ/xMwXM52Y+vXFuEzJk3QzEpRA6bt0W7K9JLgFsC3VrU2cYC+y4+A5gsNwzp3TmEb0SiLACTVGcim4M8WF/s66Exd2GG92OZZyO1z/armeV4l9nE1oTcyBwNcxf4jG761E/l2q28d9khan0Xzg/qG9aXTCqeRkVO9UoMnY="
+cache:
+  directories:
+    - .autoconf
+    - $HOME/.m2
 language: java
 script:
   - mvn test -B jacoco:report coveralls:report sonar:sonar -Dsonar.projectKey=mariuszfoltak_polish-identification-numbers
