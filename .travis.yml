@@ -10,3 +10,6 @@ cache:
 language: java
 script:
   - mvn test -B jacoco:report coveralls:report sonar:sonar -Dsonar.projectKey=mariuszfoltak_polish-identification-numbers
+os: linux
+arch:
+  - ppc64le
