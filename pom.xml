@@ -8,6 +8,22 @@
     <artifactId>polish-identification-numbers-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0-SNAPSHOT</version>
+
+    <name>Polish Identification Numbers</name>
+    <description>Java library for validation and decoding PESEL</description>
+    <url>https://github.com/mariuszfoltak/polish-identification-numbers</url>
+
+    <licenses>
+        <license>
+            <name>MIT License</name>
+            <url>http://www.opensource.org/licenses/mit-license.php</url>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://github.com/mariuszfoltak/polish-identification-numbers.git</url>
+    </scm>
+
     <modules>
         <module>polish-identification-numbers</module>
     </modules>
