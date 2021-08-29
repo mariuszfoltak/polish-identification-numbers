@@ -12,8 +12,6 @@ script:
 - mvn clean install jacoco:report sonar:sonar -Dsonar.projectKey=mariuszfoltak_polish-identification-numbers
   --settings "${TRAVIS_BUILD_DIR}/.travis/maven.settings.xml"
 os: linux
-arch:
-- ppc64le
 before_install:
 - openssl aes-256-cbc -K $encrypted_4f0d00631887_key -iv $encrypted_4f0d00631887_iv
   -in .travis/gpg.asc.enc -out .travis/gpg.asc -d
