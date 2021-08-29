@@ -16,7 +16,7 @@ public class Pesel {
     /**
      * Decoded person sex
      */
-    private final Pesel.Sex sex;
+    private final Sex sex;
 
     /**
      * Constructor of PESEL class. Throwns <code>{@link InvalidPeselException}</code> if pesel is invalid.
@@ -58,7 +58,7 @@ public class Pesel {
      *
      * @return sex
      */
-    public Pesel.Sex getSex() {
+    public Sex getSex() {
         return sex;
     }
 

@@ -1,15 +1,24 @@
 addons:
   sonarcloud:
-    organization: "mariuszfoltak"
+    organization: mariuszfoltak
     token:
-      secure: "w4uk8XJkFLC8Og52ZjZ2aItGIeeljFm65jL1fp1XeDiHMPb9+i/11l2UhYh/Uv8fbh7iiFreeY7dmuUSEYbzVlzJHR38H6x0PzRZk6hgE6/eUhNgA6zhydyZcc/o6V1W3CuEsG82lRAU0cKFgLcNT22JE5nxDoipaF6W0eJcPab/y6y6PaPBBszflqUC0iWq/aD2xYJWYP9QFBIinPOqoxmhkY1abf/BedGaOenQUwY7D62mwSXCixlXTrPNjQyonAVd5VITYAtMFDpEq2TCHHIDsyVC6Pf3GAmF2PHDkAdMZnL4y/Tp1YB/Z2avfGZKROfbvDyXNbHinGlpZdP5pUJFfVILwgdemjaJs/afAZ2SGhZZ5Ezlfa6Rf5zW2v6Z3tZvFoaYRDwSuJerdDehrKE2E6anQkR6GGfJqhkdt8gdkalXbL5kI3nLYaqoJP/NmPA1U8kOxGBxYmHkAPKH60wZrKDMoW/KisP8UfJVLyGqvU+34dbptpHw9l5o1KPLndQczJ/xMwXM52Y+vXFuEzJk3QzEpRA6bt0W7K9JLgFsC3VrU2cYC+y4+A5gsNwzp3TmEb0SiLACTVGcim4M8WF/s66Exd2GG92OZZyO1z/armeV4l9nE1oTcyBwNcxf4jG761E/l2q28d9khan0Xzg/qG9aXTCqeRkVO9UoMnY="
+      secure: w4uk8XJkFLC8Og52ZjZ2aItGIeeljFm65jL1fp1XeDiHMPb9+i/11l2UhYh/Uv8fbh7iiFreeY7dmuUSEYbzVlzJHR38H6x0PzRZk6hgE6/eUhNgA6zhydyZcc/o6V1W3CuEsG82lRAU0cKFgLcNT22JE5nxDoipaF6W0eJcPab/y6y6PaPBBszflqUC0iWq/aD2xYJWYP9QFBIinPOqoxmhkY1abf/BedGaOenQUwY7D62mwSXCixlXTrPNjQyonAVd5VITYAtMFDpEq2TCHHIDsyVC6Pf3GAmF2PHDkAdMZnL4y/Tp1YB/Z2avfGZKROfbvDyXNbHinGlpZdP5pUJFfVILwgdemjaJs/afAZ2SGhZZ5Ezlfa6Rf5zW2v6Z3tZvFoaYRDwSuJerdDehrKE2E6anQkR6GGfJqhkdt8gdkalXbL5kI3nLYaqoJP/NmPA1U8kOxGBxYmHkAPKH60wZrKDMoW/KisP8UfJVLyGqvU+34dbptpHw9l5o1KPLndQczJ/xMwXM52Y+vXFuEzJk3QzEpRA6bt0W7K9JLgFsC3VrU2cYC+y4+A5gsNwzp3TmEb0SiLACTVGcim4M8WF/s66Exd2GG92OZZyO1z/armeV4l9nE1oTcyBwNcxf4jG761E/l2q28d9khan0Xzg/qG9aXTCqeRkVO9UoMnY=
 cache:
   directories:
-    - .autoconf
-    - $HOME/.m2
+  - ".autoconf"
+  - "$HOME/.m2"
 language: java
 script:
-  - mvn test -B jacoco:report coveralls:report sonar:sonar -Dsonar.projectKey=mariuszfoltak_polish-identification-numbers
+- mvn clean install jacoco:report sonar:sonar -Dsonar.projectKey=mariuszfoltak_polish-identification-numbers
+  --settings "${TRAVIS_BUILD_DIR}/.travis/maven.settings.xml"
 os: linux
 arch:
-  - ppc64le
+- ppc64le
+before_install:
+- openssl aes-256-cbc -K $encrypted_4f0d00631887_key -iv $encrypted_4f0d00631887_iv
+  -in .travis/gpg.asc.enc -out .travis/gpg.asc -d
+- gpg --fast-import .travis/gpg.asc
+env:
+  global:
+  - secure: NQ0AChTOAS0MbxpohqI+05IV3n5yCgUp9MVAT8MaZ59Tqr0qWUp7k5TadLfRx7C8fUiiicLec58D7bARLES9LUiQ1RcZbWizLCVGcX/cSCesWvj+tY3OGsQwKArLFc0xjary+c+Vg8Fh+9Z5+CoRX1r6+aUadanIk5mk4vAKvG9HQt2DKPVAoiNmwjvSxMdZGzQFCMEdBVUqukG5uqLmSHVQHX4xJ5h3eIvg28f0pKkH+SXfNRa7BK3Chzwki3ZqPo44oY165mMoIZTAlIKPvE0b4qr42xpNmSjhx1bj7q+Q4rxxFDZt1lcqXD7ULKLRd/4zLd/irQovNtI1o7b3t86av3IJXromVDfs39St3+X9XNCP2fWuIiyxj56mpotAC+RmtwTiSm3atps14DwAdRWfveTRbVjdWW2K5RUPFHNtB0hMzHfG8FV7I2jg/rY9Tg4b4D/wG74gKrBy6VG6w65cm4S8OHEYkoqSpXzaQjrdRZmg9U+f/5+24f6sQT3VPT9NByfy0edp5KOP3OOF8bDR0YJMFm/ii3Y+tWn2DrL5MiB1jqf+rR53axoWbNfZMeuIlevWJOXYJAa5UcX01qSVGRA/M18LCuk/7tRJqynfY9HeGl19oer4J4mKVRX+Gj7IHF6q4myRk9J0YffjENX3HIxl3aBfjLVk38tayb0=
+  - secure: dcXatkFq7SQNEbwL/zeSge5dL8qge4LIdf1pRXG0mIMp0xOlIKvq9Aqqs3ebGAKMjba1Ufq5Ym88LcCjpO7yqhXX4vgToIaOcXRc4sAAlTLWWrzhmVSYMrLy9JVY/567gVbQkAmpEGAZG4SRsFFjHkqOi4+AoClB839BtPUKNj1pgM/VA9bHP/NLPpc0Qxbwk2DokIP4NBs/UtMWNMIXpX6ZmKD5lNgHrjVnrE/NdWY2f1DqPYMbbfNSrQ26hQarthhc5UJsJGgYASSaD1YQThBiayX1j+4BwjLThcVlGzXGb6+LhzOpv0P0rUbav/oUMn1bKZhoNkk/AqpxlZ5ZEWWk8T3OnWYXYj7VWiPq5byVT/R1L2pkNxJp4iS55DSBzGdyxJiQGOvzn8DZWmRSW3fnEuPaA86PlStU/cJ+y7iMLZXsMoAHHzutCK9GWUUzFZ82wtVWtXCRt4LTJBuZRJ/xVSX6mcmSeLBC7FU1VbE6+0VkoAgkj4rTMSTtoIpVMM+ImfCTb/EQzCY46MWi0Y681QY62zVUWhlAEWVMsS/vFTlSstfKKeSPvBmBMN3kvOnWemUPFTC/lMGhSabEX5zrtoUf0czul3UKyeTmSPpnxR9h0BwfAO+nfMw2A4/ncnVxZO5ujyfOkn8O1lOXWCkL/7qjzszA6u0rZ4acu9M=
