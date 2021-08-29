@@ -2,3 +2,4 @@
 [![Build Status](https://app.travis-ci.com/mariuszfoltak/polish-identification-numbers.svg?branch=main)](https://app.travis-ci.com/mariuszfoltak/polish-identification-numbers)
 [![Coverage](https://sonarcloud.io/api/project_badges/measure?project=mariuszfoltak_polish-identification-numbers&metric=coverage)](https://sonarcloud.io/dashboard?id=mariuszfoltak_polish-identification-numbers)
 [![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=mariuszfoltak_polish-identification-numbers&metric=alert_status)](https://sonarcloud.io/dashboard?id=mariuszfoltak_polish-identification-numbers)
+[![GitHub](https://img.shields.io/github/license/mariuszfoltak/polish-identification-numbers)](https://github.com/mariuszfoltak/polish-identification-numbers/blob/master/LICENSE)
