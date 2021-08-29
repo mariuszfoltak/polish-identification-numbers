@@ -3,13 +3,6 @@
           xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
                       https://maven.apache.org/xsd/settings-1.0.0.xsd">
 
-    <servers>
-        <server>
-            <id>0x6B47F550</id>
-            <passphrase></passphrase>
-        </server>
-    </servers>
-
     <profiles>
         <profile>
             <id>ossrh</id>

@@ -16,6 +16,7 @@ before_install:
 - openssl aes-256-cbc -K $encrypted_044baa266d1a_key -iv $encrypted_044baa266d1a_iv
   -in .travis/gpg.asc.enc -out .travis/gpg.asc -d
 - gpg --fast-import .travis/gpg.asc
+- cp .travis/maven.settings.xml $HOME/.m2/settings.xml
 env:
   global:
   - secure: NQ0AChTOAS0MbxpohqI+05IV3n5yCgUp9MVAT8MaZ59Tqr0qWUp7k5TadLfRx7C8fUiiicLec58D7bARLES9LUiQ1RcZbWizLCVGcX/cSCesWvj+tY3OGsQwKArLFc0xjary+c+Vg8Fh+9Z5+CoRX1r6+aUadanIk5mk4vAKvG9HQt2DKPVAoiNmwjvSxMdZGzQFCMEdBVUqukG5uqLmSHVQHX4xJ5h3eIvg28f0pKkH+SXfNRa7BK3Chzwki3ZqPo44oY165mMoIZTAlIKPvE0b4qr42xpNmSjhx1bj7q+Q4rxxFDZt1lcqXD7ULKLRd/4zLd/irQovNtI1o7b3t86av3IJXromVDfs39St3+X9XNCP2fWuIiyxj56mpotAC+RmtwTiSm3atps14DwAdRWfveTRbVjdWW2K5RUPFHNtB0hMzHfG8FV7I2jg/rY9Tg4b4D/wG74gKrBy6VG6w65cm4S8OHEYkoqSpXzaQjrdRZmg9U+f/5+24f6sQT3VPT9NByfy0edp5KOP3OOF8bDR0YJMFm/ii3Y+tWn2DrL5MiB1jqf+rR53axoWbNfZMeuIlevWJOXYJAa5UcX01qSVGRA/M18LCuk/7tRJqynfY9HeGl19oer4J4mKVRX+Gj7IHF6q4myRk9J0YffjENX3HIxl3aBfjLVk38tayb0=
