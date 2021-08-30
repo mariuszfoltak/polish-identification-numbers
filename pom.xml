@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.foltak.polish-identification-numbers-utils</groupId>
-    <artifactId>polish-identification-numbers-parent-utils</artifactId>
+    <artifactId>polish-identification-numbers-utils-parent</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0</version>
 
@@ -24,8 +24,7 @@
         <developer>
             <name>Mariusz Foltak</name>
             <email>mariusz@foltak.pl</email>
-            <organization>Foltak</organization>
-            <organizationUrl>https://www.foltak.pl</organizationUrl>
+            <organizationUrl>https://github.com/mariuszfoltak/polish-identification-numbers</organizationUrl>
         </developer>
     </developers>
 
