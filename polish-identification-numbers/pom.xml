@@ -5,7 +5,7 @@
     <parent>
         <artifactId>polish-identification-numbers-utils-parent</artifactId>
         <groupId>pl.foltak.polish-identification-numbers-utils</groupId>
-        <version>1.0.0</version>
+        <version>1.1.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>jar</packaging>

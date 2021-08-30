@@ -7,7 +7,7 @@
     <groupId>pl.foltak.polish-identification-numbers-utils</groupId>
     <artifactId>polish-identification-numbers-utils-parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0</version>
+    <version>1.1.0-SNAPSHOT</version>
 
     <name>Polish Identification Numbers utils - parent pom</name>
     <description>Java library for validating and decoding PESEL</description>
