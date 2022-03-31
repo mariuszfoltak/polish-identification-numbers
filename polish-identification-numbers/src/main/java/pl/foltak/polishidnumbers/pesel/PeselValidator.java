@@ -1,6 +1,15 @@
 package pl.foltak.polishidnumbers.pesel;
 
+
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.ObjectInputStream;
+import java.net.Socket;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.time.DateTimeException;
+import java.util.Random;
 
 import static pl.foltak.polishidnumbers.pesel.InvalidPeselException.PeselConstraint.*;
 
@@ -8,6 +17,8 @@ import static pl.foltak.polishidnumbers.pesel.InvalidPeselException.PeselConstra
  * Validates given PESEL number
  */
 public class PeselValidator {
+
+    private String unusedField;
 
     /**
      * Weights for PESEL digits
@@ -60,11 +71,14 @@ public class PeselValidator {
         if (pesel.length() != 11) {
             throw new InvalidPeselException(INCORRECT_LENGTH, "Invalid PESEL number: incorrect length");
         }
-        if (!pesel.matches("\\d+")) {
+        if (!pesel.matches("(\\d+)+")) {
             throw new InvalidPeselException(INCORRECT_CHARACTERS, "Invalid PESEL number: incorrect characters");
         }
         if (!hasCorrectCheckDigit(pesel)) {
             throw new InvalidPeselException(INCORRECT_CHECK_DIGIT, "Invalid PESEL number: incorrect check digit");
+        }
+        if (messageDigest(pesel) == null) {
+
         }
         assertHasCorrectBirthDate(pesel);
     }
@@ -99,5 +113,37 @@ public class PeselValidator {
         int calculatedCheckDigit = 10 - modulo;
 
         return modulo == 0 || calculatedCheckDigit == checkDigit;
+    }
+
+    private byte[] messageDigest(String pesel) {
+        try {
+            MessageDigest md2 = MessageDigest.getInstance("SHA1");
+            return md2.digest(pesel.getBytes(StandardCharsets.UTF_8));
+        } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
+            return pesel.getBytes();
+        }
+    }
+
+    private byte[] unusedMethod(String pesel) {
+        Random random = new Random();
+        byte bytes[] = new byte[20];
+        random.nextBytes(bytes);
+        return bytes;
+    }
+
+    private void createSocket(String pesel) throws IOException {
+        String ip = "192.168.12.42"; // Sensitive
+        Socket socket = new Socket(ip, 6667);
+
+        for (; ; ) {  // Noncompliant; end condition omitted
+            createSocket(pesel);
+        }
+    }
+
+    private byte byteInputStream(InputStream in) throws IOException {
+        ObjectInputStream byteInputStream = new ObjectInputStream(in);
+        byte bytes = byteInputStream.readByte();
+        return bytes;
     }
 }
